@@ -17,6 +17,7 @@ const visColor = '#f8556e'
 const processingColor = '#fae135'
 const nodeColor = '#56a5cd'
 const startNodeColor = '333a47'
+const colors = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4', '#469990', '#dcbeff', '#9A6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#a9a9a9', '#ffffff', '#000000'];
 const INF = 987654321
 
 function display(netNodes, netEdges) {
@@ -73,6 +74,7 @@ function Graph(props) {
     const [edges, setEdges] = useState([]);
     const [dist, setDist] = useState([]);
     const [distH, setDistH] = useState([[]]);
+    const [pah, setPah] = useState([[]]);
     function refreshData()
     {
         container = document.getElementById('edgetable');
@@ -190,12 +192,17 @@ function Graph(props) {
                 console.log(edges[i].to + " " + edges[i].from + " " + edges[i].weight);
             }
             let pot = [];
-            potH.length = nn;
-            vish[0] = [...vis];
-            potH[0] = [...pot];
+            let curp = [];
+            pah.length = nn-1;
             p.length = 0;
             for (let i = 0; i < nn; i++)
                 p.push(i);
+            for (let i = 0; i < nn; i++)
+                curp.push(getPa(i));
+            pah[0] = [...curp];
+            potH.length = nn;
+            vish[0] = [...vis];
+            potH[0] = [...pot];
             for (let i = 0; i < nn-1; i++)
             {
                 for (let j = 0; j < edges.length; j++)
@@ -209,6 +216,9 @@ function Graph(props) {
                     }
                 }
                 vish[i+1] = [...vis];
+                for (let j = 0; j < nn; j++)
+                    curp[j] = getPa(j);
+                pah[i+1] = [...curp];
             }
             //for (let i = 0; i < nn; i++)
             //    console.log(vish[i])
@@ -221,7 +231,7 @@ function Graph(props) {
             for (let i = 0; i < nn; i++)
             {
                 netNodes.get(i).color = {
-                    border:darkEdgeColor,
+                    background:colors[pah[step][i]],
                 }
             }
             for (let i = 0; i < vish[step].length; i++)
@@ -264,12 +274,12 @@ function Graph(props) {
                 if (step < nn-1)
                     setStep(step+1);
             }}>Next</button>
-            <h3>INPUT NUMBER OF NODES(2-30)</h3>
+            <h3>INPUT NUMBER OF NODES(2-20)</h3>
             <input type="text" id="number" name="number" />
             <br></br>
             <button type="button" onClick={() => {
                 const elem = document.getElementById('number')
-                if(typeof elem !== 'undefined' && elem !== null && elem.value > 1 && elem.value <= 30) {
+                if(typeof elem !== 'undefined' && elem !== null && elem.value > 1 && elem.value <= 20) {
                     setStep(0);
                     setNumNodes(elem.value);
                     setReset(1);
@@ -305,10 +315,6 @@ function App() {
                     <Graph/>
                     <h3>Edges in Priority Queue (min weight first)</h3>
                     <table id="edgetable" border="1"></table>
-                </div>
-                <div id='c3'>
-                    <h3> Distance to node by ID<br></br></h3>
-                    <table id="distancetable" border="1"></table>
                 </div>
             </div>
         </div>
