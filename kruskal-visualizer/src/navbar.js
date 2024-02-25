@@ -5,10 +5,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavBar() {
   return (<nav className="nav">
-        <a className="title">Prim Visualizer</a>
+        <a className="title">Kruskal Visualizer</a>
         <ul>
             <li className="active">
-                <a href="https://github.com/alexyd88/Prim-Visualizer">Github</a>
+                <a href="https://github.com/alexyd88/Kruskal-Visualizer">Github</a>
             </li>
         </ul>
     </nav>

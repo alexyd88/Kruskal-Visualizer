@@ -1,2 +1,2 @@
 # Kruskal-Visualizer
-Visualizes Prim's minimum spanning tree algorithm.
+Visualizes Kruskal's minimum spanning tree algorithm.

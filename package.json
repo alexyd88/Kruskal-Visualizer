@@ -1,8 +1,8 @@
 {
-  "name": "prim-visualizer",
+  "name": "kruskal-visualizer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alexyd88.github.io/Prim-Visualizer",
+  "homepage": "https://alexyd88.github.io/Kruskal-Visualizer",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
