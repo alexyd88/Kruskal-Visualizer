@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Prim-Visualizer/static/css/main.7196b13f.css",
+    "main.js": "/Prim-Visualizer/static/js/main.7e3f0979.js",
+    "index.html": "/Prim-Visualizer/index.html",
+    "main.7196b13f.css.map": "/Prim-Visualizer/static/css/main.7196b13f.css.map",
+    "main.7e3f0979.js.map": "/Prim-Visualizer/static/js/main.7e3f0979.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7196b13f.css",
+    "static/js/main.7e3f0979.js"
+  ]
+}
